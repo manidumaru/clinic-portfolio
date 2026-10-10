@@ -1,0 +1,125 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-manrope), system-ui, sans-serif;
+
+  --color-brand: #297984;
+  --color-brand-dark: #1f5f68;
+  --color-brand-soft: #5e9ea6;
+  --color-ink: #16282b;
+  --color-ink-soft: #2c4245;
+  --color-ink-nav: #3d5154;
+  --color-muted: #5b6b6e;
+  --color-subtle: #6b7b7e;
+  --color-placeholder: #7f8e90;
+  --color-surface: #f6f9f8;
+  --color-tint: #e8f2f2;
+  --color-tint-2: #eef5f5;
+  --color-line: #e3ecec;
+  --color-line-strong: #d4e4e5;
+  --color-night: #0f2a2d;
+  --color-night-text: #d6e5e6;
+  --color-night-muted: #b9cfd1;
+  --color-night-faint: #93aeb1;
+  --color-night-accent: #9fd0d5;
+  --color-star: #b7791f;
+  --color-star-light: #f4d58d;
+  --color-danger: #b42318;
+
+  --animate-rise: rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  --animate-reveal: reveal 1.3s cubic-bezier(0.2, 0.7, 0.2, 1) 0.15s both;
+  --animate-float: float 7s ease-in-out infinite alternate;
+  --animate-float-slow: float 9s ease-in-out -3s infinite alternate;
+  --animate-drift: drift 24s ease-in-out infinite alternate;
+  --animate-drift-slow: drift 30s ease-in-out -8s infinite alternate;
+  --animate-drift-slower: drift 36s ease-in-out -14s infinite alternate;
+
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @keyframes reveal {
+    from {
+      opacity: 0;
+      transform: scale(1.03);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @keyframes float {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(-10px);
+    }
+  }
+  @keyframes drift {
+    0% {
+      transform: translate(0, 0) scale(1);
+    }
+    50% {
+      transform: translate(36px, -28px) scale(1.07);
+    }
+    100% {
+      transform: translate(-24px, 20px) scale(0.96);
+    }
+  }
+}
+
+@custom-variant static (&:where(.is-static, .is-static *));
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-white text-ink antialiased;
+  }
+  section {
+    scroll-margin-top: 72px;
+  }
+  :focus-visible {
+    outline: 3px solid var(--color-brand);
+    outline-offset: 3px;
+    border-radius: 8px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    /* Near-zero rather than none, so animationend still fires (react-toastify relies on it to dismiss toasts). */
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* react-toastify brand theme (doubled :root outranks the library's injected defaults) */
+:root:root {
+  --toastify-font-family: var(--font-sans);
+  --toastify-text-color-light: var(--color-ink);
+  --toastify-toast-bd-radius: 16px;
+  --toastify-toast-shadow: 0 24px 48px -24px rgba(22, 40, 43, 0.35);
+  --toastify-color-success: var(--color-brand);
+  --toastify-icon-color-success: var(--color-brand);
+  --toastify-color-progress-success: var(--color-brand);
+  --toastify-color-error: var(--color-danger);
+  --toastify-icon-color-error: var(--color-danger);
+  --toastify-color-progress-error: var(--color-danger);
+  --toastify-spinner-color: var(--color-brand);
+  --toastify-spinner-color-empty-area: var(--color-tint);
+}
