@@ -1,4 +1,4 @@
-import type { Feature, SectionIntro, Service } from "@/types/content";
+import type { SectionIntro, Service } from "@/types/content";
 
 export const SERVICES = {
   intro: {
@@ -6,13 +6,12 @@ export const SERVICES = {
     title: "Complete Care for Every Smile",
     lead: "From preventive checkups to smile transformations, explore dental care designed around your needs.",
   } satisfies SectionIntro,
-  featured: {
-    icon: "tooth",
-    kicker: "Where most visits begin",
-    title: "General Dentistry",
-    text: "Routine checkups, consultations, and preventive care to keep small concerns from becoming big ones.",
-  } satisfies Feature & { kicker: string },
   items: [
+    {
+      icon: "tooth",
+      title: "Multispeciality Dentistry",
+      text: "Routine checkups, consultations, and preventive care to keep small concerns from becoming big ones.",
+    },
     { icon: "drop", title: "Dental Cleaning", text: "Professional cleaning and oral hygiene maintenance." },
     { icon: "sparkle", title: "Teeth Whitening", text: "Cosmetic treatments for a brighter smile." },
     {

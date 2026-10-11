@@ -33,10 +33,10 @@ export const TEAM = {
       photo: null,
     },
     {
-      name: "Rasna",
+      name: "Rasna Gosain",
       role: "Dental Hygenist",
       bio: "Supports the team for specialist consultations by appointment.",
-      initials: "R",
+      initials: "RG",
       photo: null,
     },
     {
